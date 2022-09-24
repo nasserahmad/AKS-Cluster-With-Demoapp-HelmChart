@@ -2,37 +2,37 @@
 
 ## Aims - This demo aim to demonstrate below components.
 
-    - Dockerize your application
-    - (AKS)Azure Kubernetes Service Cluster Installation and Configuration
-    - Ingress installation on AKS cluster
-    - Delegate a registerd domain from domain registrar to Azure DNS
-    - External DNS installation on AKS cluster for Azure DNS integration with ingress
-    - Enable SSL on ingress with LetsEncrypt using cert-manager
-    - Create and Install Helm chart for Generic application
-    - Azure DevOps CI/CD Pipeline
+  - Dockerize your application
+  - (AKS)Azure Kubernetes Service Cluster Installation and Configuration
+  - Ingress installation on AKS cluster
+  - Delegate a registerd domain from domain registrar to Azure DNS
+  - External DNS installation on AKS cluster for Azure DNS integration with ingress
+  - Enable SSL on ingress with LetsEncrypt using cert-manager
+  - Create and Install Helm chart for Generic application
+  - Azure DevOps CI/CD Pipeline
 
 ## Pre-requisites - Below are the Pre-requisites required to implement this demo.
 
-    - Azure Subscription to use azure services
-    - Registerd Domain Name
-    - Azure DevOps Subscription to create CI/CD pipelines
-    - Docker to build, push and run container images
-    - Helm to install, list and upgrade k8s helm-charts
+  - Azure Subscription to use azure services
+  - Registerd Domain Name
+  - Azure DevOps Subscription to create CI/CD pipelines
+  - Docker to build, push and run container images
+  - Helm to install, list and upgrade k8s helm-charts
 
 ## 01-Dockerize your application
 
 #### Docker best practices to ensure security and performance.
 
-    - Dont use docker image based on a full operating system image,extra binaries,large image size & longer download,security vulnerabilities
-    - Use the smallest possible base image that fits your needs. No need full OS & eliminate extra binaries to improve performance.
-    - Be very specific about the images and tags, to be more precise you can use image SHA256. 
-    - Use explicit and deterministic Docker base image tags.
-    - Build & Install only what you need in production in the docker image
-    - Don’t run containers as root create a user
-    - Keeping unnecessary files out of your Java container images.
-    - Find and fix security vulnerabilities in your container Docker image. Can use different tools like snyk
-    - Use multi-stage dockerfile to build custom image rather than single-stage dockerfile to install binaries, and build your code and defining multiple docker layers.
-
+  - Dont use docker image based on a full operating system image,extra binaries,large image size & longer download,security vulnerabilities
+  - Use the smallest possible base image that fits your needs. No need full OS & eliminate extra binaries to improve performance.
+  - Be very specific about the images and tags, to be more precise you can use image SHA256. 
+  - Use explicit and deterministic Docker base image tags.
+  - Build & Install only what you need in production in the docker image
+  - Don’t run containers as root create a user
+  - Keeping unnecessary files out of your Java container images.
+  - Find and fix security vulnerabilities in your container Docker image. Can use different tools like snyk
+  - Use multi-stage dockerfile to build custom image rather than single-stage dockerfile to install binaries, and build your code and defining multiple docker layers.  
+  
 ##### JAVA Multistage dockerfile
 
 ```t
