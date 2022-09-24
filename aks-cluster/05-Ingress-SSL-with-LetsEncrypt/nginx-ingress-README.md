@@ -1,11 +1,11 @@
 # Ingress - SSL
 
-## Step-01: Introduction
+## 01: Introduction
 - Implement SSL using Lets Encrypt
 
 [![Image]
 
-## Step-02: Install Cert Manager
+## 02: Install Cert Manager
 ```t
 # Label the nginx-ingress namespace to disable resource validation
 kubectl label namespace nginx-ingress cert-manager.io/disable-validation=true
@@ -60,7 +60,7 @@ kubectl get pods --namespace nginx-ingress
 kubectl get svc --namespace nginx-ingress
 ```
 
-## Step-06: Review or Create Cluster Issuer Kubernetes Manifest
+## 03: Review or Create Cluster Issuer Kubernetes Manifest
 ### Review Cluster Issuer Kubernetes Manifest
 - Create or Review Cert Manager Cluster Issuer Kubernetes Manigest
 ```yaml
@@ -96,16 +96,16 @@ kubectl describe clusterissuer letsencrypt
 ```
 
 
-## Step-07: Review Application DemoApp1,2 K8S Manifests
+## 04: Review Application DemoApp1,2 K8S Manifests
 - 01-DemoApp1-Deployment.yml
 - 02-DemoApp1-ClusterIP-Service.yml
 - 01-DemoApp2-Deployment.yml
 - 02-DemoApp2-ClusterIP-Service.yml
 
-## Step-08: Create or Review Ingress SSL Kubernetes Manifest
+## 05: Create or Review Ingress SSL Kubernetes Manifest
 - 01-Ingress-SSL.yml
 
-## Step-09: Deploy All Manifests & Verify
+## 06: Deploy All Manifests & Verify
 - Certificate Request, Generation, Approal and Download and be ready might take from 1 hour to couple of days if we make any mistakes and also fail.
 - For me it took, only 5 minutes to get the certificate from **https://letsencrypt.org/**
 ```t
@@ -141,7 +141,7 @@ I0922 18:18:27.568112       1 ingress.go:99] cert-manager/challenges/http01/self
 E0922 18:18:27.585297       1 sync.go:186] cert-manager/challenges "msg"="propagation check failed" "error"="faile perform self check GET request 'http://kubekon.info/.well-known/acme-challenge/tllPe31HzyMMEsPwr-bqBF6vyyqmVFlgLhkjono': Get \"https://kubekon.info:443/.well-known/acme-challenge/tllPe31HzyMMEsPwr-bqBF6vyyqmVFlgLhpzmtkjono\": re error: tls: unrecognized name" "dnsName"="kubekon.info" "resource_kind"="Challenge" "resource_name"="kubekon-infcrets-rg9kl-800955403-1379115109" "resource_namespace"="dsv-app" "resource_version"="v1" "type"="HTTP-01"
 ```
 
-## Step-10: Access Application
+## 07: Access Application
 - For me **cert-manager** did not work with the **nginx-ingress** and finally switch the ingress controller to **ingress-nginx** controller maintained by kubernetes and its generated and configured the certificate for my domain name.
 ```t
 # URLs
@@ -149,7 +149,7 @@ http://demoapp1.kubekon.info/
 http://demoapp1.kubekon.info/
 ```
 
-## Step-11: Verify nginx-ingress logs for Client IP
+## 08: Verify nginx-ingress logs for Client IP
 ```t
 # List Pods
 kubectl -n nginx-ingress get pods
@@ -157,7 +157,7 @@ kubectl -n nginx-ingress get pods
 # Check logs
 kubectl -n nginx-ingress logs -f ingress-controller-xxxxxxxxx
 ```
-## Step-12: Clean-Up
+## 09: Clean-Up
 ```t
 # Delete Apps
 kubectl delete -R -f kube-manifests/
@@ -172,5 +172,5 @@ kubectl delete namespace nginx-ingress
 - https://docs.cert-manager.io/
 - https://cert-manager.io/docs/installation/helm/#1-add-the-jetstack-helm-repository
 - https://cert-manager.io/docs/configuration/
-- https://cert-manager.io/docs/tutorials/acme/ingress/#step-6---configure-a-lets-encrypt-issuer
+- https://cert-manager.io/docs/tutorials/acme/ingress/#6---configure-a-lets-encrypt-issuer
 - https://letsencrypt.org/how-it-works/

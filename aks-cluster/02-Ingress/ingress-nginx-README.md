@@ -1,6 +1,6 @@
 # Ingress
 
-## Step-01: Introduction
+## 01: Introduction
 ### Ingress Basic Architecture
 [![Image]
 
@@ -14,7 +14,7 @@
 - Deploy a simple Nginx DemoApp with Ingress manifest and test it
 - Clean-Up or delete application after testing
 
-## Step-02: Create Static Public IP
+## 02: Create Static Public IP
 ```t
 # Get the resource group name of the AKS cluster 
 az aks show --resource-group aks-rg --name myakscluster --query nodeResourceGroup -o tsv
@@ -31,7 +31,7 @@ az network public-ip create --resource-group MC_aks-rg_myakscluster_eastus --nam
 20.185.83.148
 ```
 
-## Step-03: Install Ingress Controller
+## 03: Install Ingress Controller
 
 ##### Install Helm3 (if not installed)
 ```t
@@ -64,7 +64,7 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
     --set controller.service.externalTrafficPolicy=Local \
     --set controller.service.loadBalancerIP="REPLACE_STATIC_IP" 
 
-# Replace Static IP captured in Step-02 (without beta for NodeSelectors)
+# Replace Static IP captured in 02 (without beta for NodeSelectors)
 helm install ingress-nginx ingress-nginx/ingress-nginx \
     --namespace ingress --create-namespace \
     --set controller.replicaCount=2 \
@@ -92,12 +92,12 @@ http://<Public-IP-created-for-Ingress>
 Primarily refer Settings -> Frontend IP Configuration
 ```
 
-## Step-04: Review Application k8s manifests
+## 04: Review Application k8s manifests
 - 01-NginxDemoApp-Deployment.yml
 - 02-NginxDemoApp-ClusterIP-Service.yml
 - 03-ingress.yml
 
-## Step-05: Deploy Application k8s manifests and verify
+## 05: Deploy Application k8s manifests and verify
 ```t
 # Deploy
 kubectl apply -f kube-manifests/
@@ -120,7 +120,7 @@ kubectl get pods -n ingress
 kubectl logs -f <pod-name> -n ingress
 ```
 
-## Step-06: Clean-Up Apps
+## 06: Clean-Up Apps
 ```t
 # Delete Apps
 kubectl delete -f kube-manifests/

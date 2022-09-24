@@ -1,6 +1,6 @@
 # Create AKS Cluster
 
-## Step-01: Create AKS Cluster
+## 01: Create AKS Cluster
 - Create Kubernetes Cluster
 - **Basics**
   - **Subscription:** Free Trial
@@ -28,7 +28,7 @@
   - Click on **Create**
 
 
-## Step-02: Cloud Shell - Configure kubectl to connect to AKS Cluster
+## 02: Cloud Shell - Configure kubectl to connect to AKS Cluster
 - Go to https://shell.azure.com
 ```
 # Template
@@ -42,7 +42,7 @@ kubectl get nodes
 kubectl get nodes -o wide
 ```
 
-## Step-03: Explore Cluster Control Plane and Workload inside that
+## 03: Explore Cluster Control Plane and Workload inside that
 ```
 # List Namespaces
 kubectl get namespaces
@@ -55,7 +55,7 @@ kubectl get pods --all-namespaces
 kubectl get all --all-namespaces
 ```
 
-## Step-04: Explore the AKS cluster on Azure Management Console
+## 04: Explore the AKS cluster on Azure Management Console
 - Explore the following features on high-level
 - **Overview**
   - Activity Log
@@ -81,7 +81,7 @@ kubectl get all --all-namespaces
 
 
 
-## Step-05: Local Desktop - Install Azure CLI and Azure AKS CLI
+## 05: Local Desktop - Install Azure CLI and Azure AKS CLI
 ```
 # Install Azure CLI (MAC)
 brew update && brew install azure-cli
@@ -103,7 +103,7 @@ kubectl get nodes -o wide
 - https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
 - https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest
 
-## Step-06: Deploy Sample Application and Test
+## 06: Deploy Sample Application and Test
 - Don't worry about what is present in these two files for now. 
 - By the time we complete **Kubernetes Fundamentals** sections, you will be an expert in writing Kubernetes manifest in YAML.
 - For now just focus on result. 
@@ -124,7 +124,7 @@ kubectl get service
 http://<External-IP-from-get-service-output>
 ```
 
-## Step-07: Clean-Up
+## 07: Clean-Up
 ```
 # Delete Applications
 kubectl delete -f kube-manifests/

@@ -1,13 +1,13 @@
 # Kubernetes ExternalDNS to create Record Sets in Azure DNS from AKS
 
-## Step-01: Introduction
+## 01: Introduction
 - Create External DNS Manifest
 - Provide Access to DNZ Zones using **Azure Managed Service Identity** for External DNS pod to create **Record Sets** in Azure DNS Zones
 - Review Application & Ingress Manifests
 - Deploy and Test
 
 
-## Step-02: Create External DNS Manifests
+## 02: Create External DNS Manifests
 - External-DNS needs permissions to Azure DNS to modify (Add, Update, Delete DNS Record Sets)
 - We can provide permissions to External-DNS pod in two ways in Azure 
   - Using Azure Service Principal
@@ -105,7 +105,7 @@ spec:
           secretName: azure-config-file
 ```
 
-## Step-03: Create MSI - Managed Service Identity for External DNS to access Azure DNS Zones
+## 03: Create MSI - Managed Service Identity for External DNS to access Azure DNS Zones
 
 ### Create Manged Service Identity (MSI)
 - Go to All Services -> Managed Identities -> Add
@@ -130,14 +130,14 @@ spec:
   "userAssignedIdentityID": "e0c4a514-de61-49b4-9279-a70361ab4295"
 ```
 
-## Step-04: Associate MSI in AKS Cluster VMSS
+## 04: Associate MSI in AKS Cluster VMSS
 TO give AKS pod an access to azure DNS zone associate the created MSI in AKS cluster VMSS.
 - Go to All Services -> Virtual Machine Scale Sets (VMSS) -> Open myakscluster related VMSS (aks-agentpool-27193923-vmss)
 - Go to Settings -> Identity -> User assigned -> Add -> myakscluster-externaldns-access-to-dnszones 
 
 
 
-## Step-05: Create Kubernetes Secret and Deploy ExternalDNS
+## 05: Create Kubernetes Secret and Deploy ExternalDNS
 ```
 # Create Secret
 cd kube-manifests/01-ExteranlDNS
@@ -166,7 +166,7 @@ time="2020-08-24T11:27:59Z" level=info msg="Resolving to user assigned identity,
 ```
 
 
-## Step-06: Deploy Application and Test
+## 06: Deploy Application and Test
 - When dns record set got created in DNS Zone, the log in external-dns should look as below.
 
 ### Deploy Application
@@ -225,7 +225,7 @@ http://www.kubekon.info
 # Note: Replace kubekon.info with your domain name
 ```
 
-## Step-07: Clean-Up
+## 07: Clean-Up
 ```t
 # Delete Application
 kubectl delete -f kube-manifests/02-DemoAPP

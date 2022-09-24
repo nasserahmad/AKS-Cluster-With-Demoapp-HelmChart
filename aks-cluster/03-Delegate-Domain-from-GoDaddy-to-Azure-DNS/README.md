@@ -1,12 +1,12 @@
 # Delegate Domain to Azure DNS
 
-## Step-01: Introduction
+## 01: Introduction
 - Understand about
   - Domain Registrar i.e GoDaddy in our case
   - DNS Zones
 - Learn to delegate a domain from GoDaddy to Azure DNS by creating DNS Zones in Azure Cloud 
 
-## Step-02: DNS Zones - Create DNS Zone
+## 02: DNS Zones - Create DNS Zone
 - Go to Service -> **DNS Zones**
 - **Subscription:** (You need to have a paid subscription for this)
 - **Resource Group:** dns-zones
@@ -14,7 +14,7 @@
 - **Resource Group Location:** East US
 - Click on **Review + Create**
 
-## Step-03: Make a note of Azure Nameservers
+## 03: Make a note of Azure Nameservers
 - Go to Services -> **DNS Zones** -> **kubekon.info**
 - Make a note of Nameservers
 ```t
@@ -24,7 +24,7 @@ ns3-34.azure-dns.org.
 ns4-34.azure-dns.info.
 ```
 
-## Step-04: Update Nameservers at your Domain provider (Mine is GoDaddy)
+## 04: Update Nameservers at your Domain provider (Mine is GoDaddy)
 - **Verify before updation**
 ```t
 nslookup -type=SOA kubekon.info

@@ -1,37 +1,38 @@
 # DevOps AKS Demo
 
 ## Aims - This demo aim to demonstrate below components.
-
-##### - Dockerize your application
-##### - (AKS)Azure Kubernetes Service Cluster Installation and Configuration
-##### - Ingress installation on AKS cluster
-##### - Delegate a registerd domain from domain registrar to Azure DNS
-##### - External DNS installation on AKS cluster for Azure DNS integration with ingress
-##### - Enable SSL on ingress with LetsEncrypt using cert-manager
-##### - Create and Install Helm chart for Generic application
-##### - Azure DevOps CI/CD Pipeline
-
+```t
+    - Dockerize your application
+    - (AKS)Azure Kubernetes Service Cluster Installation and Configuration
+    - Ingress installation on AKS cluster
+    - Delegate a registerd domain from domain registrar to Azure DNS
+    - External DNS installation on AKS cluster for Azure DNS integration with ingress
+    - Enable SSL on ingress with LetsEncrypt using cert-manager
+    - Create and Install Helm chart for Generic application
+    - Azure DevOps CI/CD Pipeline
+```
 ## Pre-requisites - Below are the Pre-requisites required to implement this demo.
-
-##### - Azure Subscription for using azure services
-##### - Registerd Domain Name
-##### - Azure DevOps Subscription for CI/CD pipelines
-##### - Docker for building and pushing docker image
-##### - Helm for install and upgrade k8s helm-charts
-
+```t
+    - Azure Subscription to use azure services
+    - Registerd Domain Name
+    - Azure DevOps Subscription to create CI/CD pipelines
+    - Docker to build, push and run container images
+    - Helm to install, list and upgrade k8s helm-charts
+```
 ## 01-Dockerize your application
 
 #### Some of the docker best practices to ensure security and performance.
-   - Dont use docker image based on a full operating system image,extra binaries,large image size & longer download,security vulnerabilities
-   - Use the smallest possible base image that fits your needs. No need full OS & eliminate extra binaries to improve performance.
-   - Be very specific about the images and tags, to be more precise you can use image SHA256. 
-   - Use explicit and deterministic Docker base image tags.
-   - Build & Install only what you need in production in the docker image
-   - Don’t run containers as root create a user
-   - Keeping unnecessary files out of your Java container images.
-   - Find and fix security vulnerabilities in your container Docker image. Can use different tools like snyk
-   - Use multi-stage builds for your containers in developement environement rather than using larger image and defining multiple layers to install binaries and build your code.
-
+```t 
+    - Dont use docker image based on a full operating system image,extra binaries,large image size & longer download,security vulnerabilities
+    - Use the smallest possible base image that fits your needs. No need full OS & eliminate extra binaries to improve performance.
+    - Be very specific about the images and tags, to be more precise you can use image SHA256. 
+    - Use explicit and deterministic Docker base image tags.
+    - Build & Install only what you need in production in the docker image
+    - Don’t run containers as root create a user
+    - Keeping unnecessary files out of your Java container images.
+    - Find and fix security vulnerabilities in your container Docker image. Can use different tools like snyk
+    - Use multi-stage dockerfile to build custom image rather than single-stage dockerfile to install binaries, and build your code and defining multiple docker layers.
+```
 ##### JAVA Multistage dockerfile
 
 ```t
@@ -74,36 +75,36 @@ CMD "dumb-init" "java" "-jar" "application.jar"
 ```
 
 ## 02-(AKS)Azure Kubernetes Service Cluster Installation and Configuration
-```t
-- For AKS Cluster installation and configuration kindly refer to below document.
-- [**Reference Documentation**](https://github.com/nasserahmad/akswithdemoapp/blob/main/aks-cluster/01-Create-AKS-Cluster/README.md)
 
-```
+- For AKS Cluster installation and configuration PFB **Reference Documentation**.
+  - [**Reference Documentation**](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/aks-cluster/01-Create-AKS-Cluster/README.md)
+
+
 ## 03-Ingress installation on AKS cluster
-```t
-- For Ingress installation on AKS cluster PFB document reference link.
-- [**Reference Documentation ingress-nginx**](https://github.com/nasserahmad/akswithdemoapp/blob/main/aks-cluster/02-Ingress/ingress-nginx-README.md)
-- [**Reference Documentation nginx-ingress**](https://github.com/nasserahmad/akswithdemoapp/blob/main/aks-cluster/02-Ingress/nginx-ingress-README.md)
-```
-## 04-Delegate a registerd domain from domain registrar to Azure DNS
-```t
-- To delegate a domain 'kubekon.info' from GoDaddy to azure DNS PFB document reference link.
-- [**Reference Documentation**]
--
-```
-## 05-External DNS installation on AKS cluster for Azure DNS integration with ingress
-```t
-- To install external DNS on AKS cluster for Azure DNS integration with ingress PFB document reference link.
-- [**Reference Documentation**]
--
-```
-## 06-Enabling SSL on ingress with LetsEncrypt using cert-manager
-```t
-- To enable SSL on ingress with LetsEncrypt Issuer and cert-manager PFB document reference link.
 
-- [**Reference Documentation**]
--
-```
+- For Ingress installation on AKS cluster PFB **Reference Documentation**.
+  - [**Reference Documentation ingress-nginx**](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/aks-cluster/02-Ingress/ingress-nginx-README.md)
+  - [**Reference Documentation nginx-ingress**](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/aks-cluster/02-Ingress/nginx-ingress-README.md)
+
+## 04-Delegate a registerd domain from domain registrar to Azure DNS
+
+- To delegate a domain 'kubekon.info' from GoDaddy to azure DNS PFB **Reference Documentation**.
+  - [**Reference Documentation**](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/tree/main/aks-cluster/03-Delegate-Domain-from-GoDaddy-to-Azure-DNS)
+
+
+## 05-External DNS installation on AKS cluster for Azure DNS integration with ingress
+
+- To install external DNS on AKS cluster for Azure DNS integration with ingress PFB **Reference Documentation**.
+  - [**Reference Documentation**](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/tree/main/aks-cluster/04-ExternalDNS-for-AzureDNS-on-AKS)
+
+## 06-Enabling SSL on ingress with LetsEncrypt using cert-manager
+
+- To enable SSL on ingress with LetsEncrypt Issuer and cert-manager PFB **Reference Documentation**.
+
+- [**Reference Documentation ingress-nginx**](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/aks-cluster/05-Ingress-SSL-with-LetsEncrypt/ingress-nginx-README.md)
+
+- [**Reference Documentation nginx-ingress**](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/aks-cluster/05-Ingress-SSL-with-LetsEncrypt/nginx-ingress-README.md)
+
 ## 07-Create and Install Helm chart for Generic application
 
 #### Install Helm3 (if not installed)
