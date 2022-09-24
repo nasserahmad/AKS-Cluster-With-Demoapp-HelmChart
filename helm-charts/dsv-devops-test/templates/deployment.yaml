@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "dsv-devops-test.fullname" . }}
+  labels:
+    {{- include "dsv-devops-test.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "dsv-devops-test.labels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "dsv-devops-test.labels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "dsv-devops-test.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: ORG_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ORG_NAME
+                  name: {{ .Release.Name }}-env
+            - name: ORGTYPE
+              valueFrom:
+                configMapKeyRef:
+                  key: orgType
+                  name: {{ .Release.Name }}-env
+            - name: FROMCONFIGURATION
+              valueFrom:
+                configMapKeyRef:
+                  key: fromconfigration
+                  name: {{ .Release.Name }}-env
+            - name: ORGSEC
+              valueFrom:
+                secretKeyRef:
+                  key: orgSec
+                  name: {{ .Release.Name }}-sc
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+          volumeMounts:
+            - name: {{ .Release.Name}}-volume
+              mountPath: {{ .Values.volumeMounts.mountPath | quote }}
+      volumes:
+        - name: {{ .Release.Name}}-volume
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name}}-pvc

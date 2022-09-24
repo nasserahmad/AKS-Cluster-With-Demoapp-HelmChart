@@ -1,6 +1,4 @@
 target/
-dsv-demoapp/target/
-dsv-demoapp/path
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -11,7 +9,6 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-dsv-demoapp/.mvn/wrapper/
 
 # Compiled class file
 *.class
@@ -26,8 +23,6 @@ dsv-demoapp/.mvn/wrapper/
 .mtj.tmp/
 
 # Package Files #
-dsv-demoapp/*.jar
-dsv-demoapp/*.war
 *.jar
 *.war
 *.ear
@@ -63,7 +58,7 @@ hs_err_pid*
 **.idea/**
 .idea/
 *.iml
-mvnw.cmd
+
 # Eclipse
 .project
 .classpath

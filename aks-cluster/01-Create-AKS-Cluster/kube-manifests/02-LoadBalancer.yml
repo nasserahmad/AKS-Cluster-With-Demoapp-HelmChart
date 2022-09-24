@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demoapp-loadbalancer
+  labels: 
+    app: demoapp
+spec:
+  type: LoadBalancer 
+  selector:
+    app: demoapp
+  ports: 
+    - port: 80
+      targetPort: 80

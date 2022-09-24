@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourceName": {
+            "value": "myakscluster"
+        },
+        "location": {
+            "value": "eastus"
+        },
+        "dnsPrefix": {
+            "value": "myakscluster-dns"
+        },
+        "kubernetesVersion": {
+            "value": "1.23.8"
+        },
+        "networkPlugin": {
+            "value": "azure"
+        },
+        "enableRBAC": {
+            "value": true
+        },
+        "nodeResourceGroup": {
+            "value": "MC_aks-rg_myakscluster_eastus"
+        },
+        "adminGroupObjectIDs": {
+            "value": []
+        },
+        "disableLocalAccounts": {
+            "value": false
+        },
+        "azureRbac": {
+            "value": false
+        },
+        "enablePrivateCluster": {
+            "value": false
+        },
+        "enableHttpApplicationRouting": {
+            "value": false
+        },
+        "enableAzurePolicy": {
+            "value": false
+        },
+        "enableSecretStoreCSIDriver": {
+            "value": true
+        },
+        "vmssNodePool": {
+            "value": true
+        },
+        "vnetSubnetID": {
+            "value": "/subscriptions/5e9c4ef8-43bf-42b3-8c06-1dbbafea958f/resourceGroups/aks-rg/providers/Microsoft.Network/virtualNetworks/aks-rg-vnet/subnets/default"
+        },
+        "serviceCidr": {
+            "value": "10.0.0.0/16"
+        },
+        "dnsServiceIP": {
+            "value": "10.0.0.10"
+        },
+        "dockerBridgeCidr": {
+            "value": "172.17.0.1/16"
+        },
+        "workspaceName": {
+            "value": "DefaultWorkspace-5e9c4ef8-43bf-42b3-8c06-1dbbafea958f-EUS"
+        },
+        "omsWorkspaceId": {
+            "value": "/subscriptions/5e9c4ef8-43bf-42b3-8c06-1dbbafea958f/resourceGroups/DefaultResourceGroup-EUS/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-5e9c4ef8-43bf-42b3-8c06-1dbbafea958f-EUS"
+        },
+        "workspaceRegion": {
+            "value": "eastus"
+        },
+        "networkPolicy": {
+            "value": "azure"
+        }
+    }
+}

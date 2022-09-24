@@ -1,0 +1,13 @@
+{{- if .Values.storagclass.enabled }}
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ .Release.Name }}-sc
+provisioner: kubernetes.io/azure-file
+mountOptions:
+{{- range .Values.storagclass.mountOptions }}
+- {{ . }}
+{{- end }}
+parameters:
+  skuName: {{ .Values.storagclass.skuname }}
+{{- end }}
