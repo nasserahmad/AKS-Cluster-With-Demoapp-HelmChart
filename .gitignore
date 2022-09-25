@@ -1,6 +1,6 @@
 target/
-dsv-demoapp/target/
-dsv-demoapp/path
+dsv-devops-test/target/
+dsv-devops-test/path
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -11,8 +11,8 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-dsv-demoapp/.mvn/wrapper/
-
+dsv-devops-test/.mvn/wrapper/
+dsv-devops-test/*.tgz
 # Compiled class file
 *.class
 
@@ -26,8 +26,8 @@ dsv-demoapp/.mvn/wrapper/
 .mtj.tmp/
 
 # Package Files #
-dsv-demoapp/*.jar
-dsv-demoapp/*.war
+dsv-devops-test/*.jar
+dsv-devops-test/*.war
 *.jar
 *.war
 *.ear
