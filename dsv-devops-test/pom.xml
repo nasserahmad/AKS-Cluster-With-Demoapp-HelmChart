@@ -28,7 +28,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -45,8 +44,9 @@
                     </configuration>
                 </execution>
             </executions>
+
 			</plugin>
 		</plugins>
+		 <finalName>dsvpplication</finalName>
 	</build>
-
 </project>

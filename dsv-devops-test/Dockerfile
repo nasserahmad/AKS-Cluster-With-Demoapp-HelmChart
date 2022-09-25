@@ -11,22 +11,24 @@
 #Use multi-stage builds for your containers in rather than using larger image and defining multiple layers to install binaries and build your code.
 
 # Java application build stage with Maven.
-FROM maven:3.8.3-jdk-8-slim AS java-build
-RUN mkdir /javaproject
-COPY ./src /javaproject
-COPY pom.xml /javaproject
-WORKDIR /javaproject
-##cache maven remote dependencies of .m2 repository to avoid downloading in future build to improve performance.
-RUN --mount=type=cache,target=/root/.m2 mvn clean package
+#FROM maven:3.8.3-jdk-8-slim AS java-build
+#RUN mkdir /javaproject
+#COPY ./src /javaproject
+#COPY pom.xml /javaproject
+#WORKDIR /javaproject
+###cache maven remote dependencies of .m2 repository to avoid downloading in future build to improve performance.
+#RUN --mount=type=cache,target=/root/.m2 mvn clean package
 
-FROM adoptopenjdk/openjdk8:x86_64-alpine-jre8u345-b01 AS java-publish
+# AS java-publish
+FROM adoptopenjdk/openjdk8:x86_64-alpine-jre8u345-b01 
 ARG ORG
 ENV ORG_NAME ${ORG}
 RUN apk add dumb-init
 RUN mkdir /java-app
 #Don’t run containers as root create a user
 RUN addgroup --system javauser && adduser -S -s /bin/false -G javauser javauser
-COPY --from=java-build /javaproject/target/*.jar /java-app/application.jar
+#COPY --from=java-build /javaproject/target/*.jar /java-app/application.jar
+COPY ./target/dsv-0.0.1-SNAPSHOT.jar /java-app/application.jar
 WORKDIR /java-app
 RUN chown -R javauser:javauser /java-app
 USER javauser
