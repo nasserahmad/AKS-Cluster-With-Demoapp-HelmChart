@@ -2,6 +2,7 @@
 
 ## 01: Introduction
 ### Ingress Basic Architecture
+[![Image](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/aks-cluster/02-Ingress/basic-arch-png/basic-arch.PNG)
 
 ### What are we going to configure and install to implement ingress architecture?
 

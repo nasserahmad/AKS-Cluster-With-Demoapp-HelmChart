@@ -3,7 +3,7 @@
 ## 01: Introduction
 - Implement SSL using Lets Encrypt
 
-[![Image]
+[![Image](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/aks-cluster/05-Ingress-SSL-with-LetsEncrypt/arch-png/ingress-ssl.PNG)
 
 ## 02: Install Cert Manager
 ```t
