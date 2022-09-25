@@ -10,7 +10,7 @@ Here are the technologies we’ll use.
 ## The DevOps Workflow
 This is the DevOps workflow
 
-![Image 1]() 
+![Image 1](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/common/arch-png/arch-png.PNG) 
 
 * Devs and Ops commit code change (apps, infrastructure-as-code, etc.) to Azure repos
 * Azure build pipeline will build and push both the app as a Docker image and the Helm chart in an Azure Container Registry (ACR)
