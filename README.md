@@ -24,7 +24,7 @@
 #### Docker best practices to ensure security and performance.
 
   - Dont use docker image based on a full operating system image,extra binaries,large image size & longer download,security vulnerabilities
-  - Use the smallest possible base image that fits your needs. No need full OS & eliminate extra binaries to improve performance.
+  - Use the smallest possible base image that fits your needs. No need full OS & eliminate extra binaries for better performance.
   - Be very specific about the images and tags, to be more precise you can use image SHA256. 
   - Use explicit and deterministic Docker base image tags.
   - Build & Install only what you need in production in the docker image

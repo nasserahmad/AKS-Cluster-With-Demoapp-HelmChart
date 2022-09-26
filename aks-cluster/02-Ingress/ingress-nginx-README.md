@@ -1,6 +1,11 @@
 # Ingress
 
 ## 01: Introduction
+  - Accept traffic from outside the Kubernetes platform, and load balance it to pods (containers) running inside the platform
+  - Can manage egress traffic within a cluster for services which need to communicate with other services outside of a cluster
+  - Are configured using the Kubernetes API to deploy objects called “Ingress Resources”
+  - Monitor the pods running in Kubernetes and automatically update the load‑balancing rules when pods are added or removed from a service
+  
 ### Ingress Basic Architecture
 [![Image](https://github.com/nasserahmad/AKS-Cluster-With-Demoapp-HelmChart/blob/main/aks-cluster/02-Ingress/basic-arch-png/basic-arch.PNG)
 
